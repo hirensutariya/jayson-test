@@ -12,6 +12,8 @@ Laravel and Vue Admin panel:
 - **create new database**
 - **copy env.example and remove env**
 - **change database name into env**
+- **php artisan key:generate**
+- **php artisan migrate**
 - **php artisan db:seed**
 
 ### Start Commands
