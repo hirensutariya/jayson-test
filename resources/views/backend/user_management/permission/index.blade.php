@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page_title','User List')
+@section('page_title','Permission List')
 
 @section('breadcrumb')
     Permission List

@@ -84,7 +84,8 @@ class UserController extends Controller
             'firstname' => 'required',
             'lastname' => 'required',
             'email' => 'required',
-            'role' => 'required'
+            'role' => 'required',
+            'password' => 'required|confirmed|min:6'
         ]);
 
         $user = User::create([
@@ -92,7 +93,7 @@ class UserController extends Controller
             'first_name' => $request->firstname,
             'last_name' => $request->lastname,
             'email' => $request->email,
-            'password' => Hash::make('123456789')
+            'password' => Hash::make($request->password)
         ]);
 
         UserRole::create([
@@ -196,7 +197,7 @@ class UserController extends Controller
         }
     }
 
-    public function Permission()
+    /*public function Permission()
     {
         $permissionName = 'View Country';
         $permission = new Permission();
@@ -335,5 +336,5 @@ class UserController extends Controller
         $user->save();
         $user->roles()->attach($role);
         $user->permissions()->attach($allPermission);
-    }
+    }*/
 }

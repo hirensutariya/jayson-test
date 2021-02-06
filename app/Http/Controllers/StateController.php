@@ -51,7 +51,7 @@ class StateController extends Controller
         foreach ($allState as $state) {
             $data_arr[] = array(
                 "id" => $state->id,
-                "country" => $state->country->name,
+                "country" => $state->country,
                 "name" => $state->name,
                 "date" => Carbon::parse($state->created_at)->format('Y-m-d H:i:s')
             );
@@ -166,6 +166,8 @@ class StateController extends Controller
 
         $state = States::findOrFail($id);
 
+        Cities::where('state_id',$id)->delete();
+
         $state->delete();
 
         return response()->json([
@@ -179,7 +181,7 @@ class StateController extends Controller
         return response()->json($getAllState);
 
     }
-    public function apiGetStates()
+    public function apiGetStates(Request $request)
     {
         $countryId = (int) $request->country_id;
         $stateList = States::where('country_id',$countryId)->get();

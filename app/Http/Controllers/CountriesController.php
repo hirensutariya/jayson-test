@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\States;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -157,6 +158,8 @@ class CountriesController extends Controller
     public function destroy($id)
     {
         $country = Countries::findOrFail($id);
+
+        States::where('country_id',$id)->delete();
 
         $country->delete();
 

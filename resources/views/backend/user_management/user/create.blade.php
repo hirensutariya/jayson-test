@@ -71,6 +71,26 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="password" class="form-control" value="">
+                            @if($errors->has('password'))
+                                <span class="help-block m-b-none">{{ $errors->first('password') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Confirm Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" name="password_confirmation" class="form-control" value="">
+                            @if($errors->has('password_confirmation'))
+                                <span class="help-block m-b-none">{{ $errors->first('password_confirmation') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
 					<div class="form-group">
 						<div class="col-sm-2 col-sm-offset-1">
 							<button class="btn btn-primary" type="submit">Save</button>

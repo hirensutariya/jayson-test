@@ -93,8 +93,9 @@ export default {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`employee/destroy/${id}`)
+                    axios.delete(`employee/${id}`)
                     .then(res => {
+                        this.getEmployeeList();
                         console.log(res)
                     })
                     .catch(err => {
