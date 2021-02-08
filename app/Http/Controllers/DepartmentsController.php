@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Sentinel;
 
 class DepartmentsController extends Controller
 {
@@ -48,7 +49,9 @@ class DepartmentsController extends Controller
             $data_arr[] = array(
                 "id" => $department->id,
                 "name" => $department->name,
-                "date" => Carbon::parse($department->created_at)->format('Y-m-d H:i:s')
+                "date" => Carbon::parse($department->created_at)->format('Y-m-d H:i:s'),
+                "update" => Sentinel::getUser()->hasAccess('departments.update'),
+                "delete" => Sentinel::getUser()->hasAccess('departments.delete'),
             );
         }
 

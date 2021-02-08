@@ -7,6 +7,7 @@ use App\Models\Countries;
 use App\Models\States;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Sentinel;
 
 class CityController extends Controller
 {
@@ -54,7 +55,9 @@ class CityController extends Controller
                 "id" => $city->id,
                 "state" => $city->state->name,
                 "name" => $city->name,
-                "date" => Carbon::parse($city->created_at)->format('Y-m-d H:i:s')
+                "date" => Carbon::parse($city->created_at)->format('Y-m-d H:i:s'),
+                "update" => Sentinel::getUser()->hasAccess('cities.update'),
+                "delete" => Sentinel::getUser()->hasAccess('cities.delete'),
             );
         }
 

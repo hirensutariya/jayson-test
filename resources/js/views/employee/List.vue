@@ -14,15 +14,15 @@
             </div>
             <div class="card-tools">
                 <div class="input-group input-group-sm">
-                    <router-link :to="{ name: 'EmployeeAdd'}" class="btn btn-primary btn-block">Add New Employee</router-link>
+                    <router-link v-if="this.sentinel['permissions']['employee.create']" :to="{ name: 'EmployeeAdd'}" class="btn btn-primary btn-block">Add New Employee</router-link>
                 </div>
             </div>
         </b-card-header>
-        <b-table striped bordered :items="employeeList" :fields="fields">
+        <b-table striped bordered :items="employeeListComp" :fields="fields">
 
             <template #cell(options)="row">
-                <b-button variant="primary" size="sm" @click="editEmployee(row.item.id)" class="mr-2">Edit</b-button>
-                <b-button variant="danger" size="sm" @click="deleteEmployee(row.item.id)" class="mr-2">Delete</b-button>
+                <b-button variant="primary" size="sm" v-if="row.item.update" @click="editEmployee(row.item.id)" class="mr-2">Edit</b-button>
+                <b-button variant="danger" size="sm" v-if="row.item.delete" @click="deleteEmployee(row.item.id)" class="mr-2">Delete</b-button>
             </template>
 
         </b-table>
@@ -39,6 +39,7 @@
 
 
 export default {
+    props: ['sentinel'],
     data(){
         return{
             searchstr:"",
@@ -50,9 +51,26 @@ export default {
             employeeList:[]
         }
     },
+    computed:{
+        employeeListComp() {
+            return this.employeeList.map(element => {
+                return {
+                    id:element.id,
+                    first_name:element.first_name,
+                    last_name:element.last_name,
+                    date_hired:element.date_hired,
+                    'department.name':element.department.name,
+                    update:this.sentinel['permissions']['employee.update'],
+                    delete:this.sentinel['permissions']['employee.delete'],
+                }
+            });
+        }
+    },
     mounted() {
         this.getDepartment();
         this.getEmployeeList();
+
+        // console.log(this.sentinel);
     },
     methods:{
         getDepartment() {

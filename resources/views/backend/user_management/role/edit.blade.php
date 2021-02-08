@@ -25,25 +25,25 @@
 						</div>
 					</div>
 
-					<div class="col-sm-6">
+{{--					<div class="col-sm-6">--}}
 
-						@foreach($permissionList as $permission)
-						<div class="form-group">
-							<div class="form-check">
-								<label class="form-check-label">
+{{--						@foreach($permissionList as $permission)--}}
+{{--						<div class="form-group">--}}
+{{--							<div class="form-check">--}}
+{{--								<label class="form-check-label">--}}
 
-									<input class="form-check-input" type="checkbox" name="permissions[{{$permission['id']}}]"
-                                    @foreach($role->permissions as $rolePermission)
-                                        @if($rolePermission->id == $permission['id'])
-                                            checked
-                                        @endif
-                                    @endforeach
-                                     >{{ $permission['name'] }}
-								</label>
-							</div>
-						</div>
-						@endforeach
-					</div>
+{{--									<input class="form-check-input" type="checkbox" name="permissions[{{$permission['id']}}]"--}}
+{{--                                    @foreach($role->permissions as $rolePermission)--}}
+{{--                                        @if($rolePermission->id == $permission['id'])--}}
+{{--                                            checked--}}
+{{--                                        @endif--}}
+{{--                                    @endforeach--}}
+{{--                                     >{{ $permission['name'] }}--}}
+{{--								</label>--}}
+{{--							</div>--}}
+{{--						</div>--}}
+{{--						@endforeach--}}
+{{--					</div>--}}
 
 					<div class="form-group">
 						<div class="col-sm-2 col-sm-offset-1">

@@ -16,7 +16,7 @@ class UserRoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users_roles')->delete();
+        DB::table('role_users')->delete();
 
         $userRoleList = [
             [
@@ -25,6 +25,6 @@ class UserRoleSeeder extends Seeder
             ]
         ];
 
-        DB::table('users_roles')->insert($userRoleList);
+        DB::table('role_users')->insert($userRoleList);
     }
 }

@@ -64,7 +64,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
-        'role' => \App\Http\Middleware\RoleMiddleware::class,
-        'check-permission' => \App\Http\Middleware\CheckPermission::class,
+        'sentinel.auth' => \App\Http\Middleware\SentinelAuth::class,
+        // 'role' => \App\Http\Middleware\RoleMiddleware::class,
+        // 'check-permission' => \App\Http\Middleware\CheckPermission::class,
     ];
 }

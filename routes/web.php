@@ -32,7 +32,7 @@ Route::get('/', function () {
 Route::get('/login',[AuthController::class,'loginPage'])->name('backend.user.login');
 Route::post('/login',[AuthController::class,'loginProccess'])->name('backend.user.login.process');
 
-Route::group(['middleware' => ['auth','prevent-back-history']],function() {
+Route::group(['middleware' => ['sentinel.auth','prevent-back-history']],function() {
 
      Route::get('/dashboard',[DashboardController::class,'index'])->name('backend.dashboard');
 

@@ -11,7 +11,7 @@
         <!-- Messages Dropdown Menu -->
         <li class="nav-item">
             <a href="#" class="">
-                <span class="hidden-xs">{{ auth()->user()->username }}</span>
+                <span class="hidden-xs">{{ Sentinel::getUser()->first_name }}</span>
             </a>
         </li>
         <li class="nav-item">

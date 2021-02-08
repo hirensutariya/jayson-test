@@ -25,17 +25,17 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
-                            @foreach($pemissionList as $pemission)
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="checkbox" name="permissions[{{$pemission->id}}]">{{ $pemission->name }}
-                                    </label>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
+{{--                        <div class="col-sm-6">--}}
+{{--                            @foreach($pemissionList as $pemission)--}}
+{{--                            <div class="form-group">--}}
+{{--                                <div class="form-check">--}}
+{{--                                    <label class="form-check-label">--}}
+{{--                                        <input class="form-check-input" type="checkbox" name="permissions[{{$pemission->id}}]">{{ $pemission->name }}--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
 
                         <div class="form-group">
                             <div class="col-sm-2 col-sm-offset-1">

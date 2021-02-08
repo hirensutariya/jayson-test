@@ -25,8 +25,17 @@ var AjaxDatatablesClient = {
                     "data": null,
                     "render": function (data, type, row, meta) {
 
-                        return '<a href="' + APP_URL + "/countries/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>  <a href="javascript:;" data-text="country" data-url="' + APP_URL + "/countries/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        var buttons = "";
 
+                        if(row.update){
+                            buttons += '<a href="' + APP_URL + "/countries/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>';
+                        }
+
+                        if(row.delete){
+                            buttons += '<a href="javascript:;" data-text="country" data-url="' + APP_URL + "/countries/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        }
+
+                        return buttons;
                     }
                 }
             ],
@@ -54,7 +63,17 @@ var AjaxDatatablesClient = {
                     "data": null,
                     "render": function (data, type, row, meta) {
 
-                        return '<a href="' + APP_URL + "/states/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>  <a href="javascript:;" data-text="state" data-url="' + APP_URL + "/states/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        var buttons = "";
+
+                        if(row.update){
+                            buttons += '<a href="' + APP_URL + "/states/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>';
+                        }
+
+                        if(row.delete){
+                            buttons += '<a href="javascript:;" data-text="state" data-url="' + APP_URL + "/states/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        }
+
+                        return buttons;
                     }
                 }
             ],
@@ -80,7 +99,17 @@ var AjaxDatatablesClient = {
                     "data": null,
                     "render": function (data, type, row, meta) {
 
-                        return '<a href="' + APP_URL + "/cities/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>  <a href="javascript:;" data-text="city" data-url="' + APP_URL + "/cities/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        var buttons = "";
+
+                        if(row.update){
+                            buttons += '<a href="' + APP_URL + "/cities/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>';
+                        }
+
+                        if(row.delete){
+                            buttons += '<a href="javascript:;" data-text="city" data-url="' + APP_URL + "/cities/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        }
+
+                        return buttons;
                     }
                 }
             ],
@@ -105,7 +134,17 @@ var AjaxDatatablesClient = {
                     "data": null,
                     "render": function (data, type, row, meta) {
 
-                        return '<a href="' + APP_URL + "/departments/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>  <a href="javascript:;" data-text="department" data-url="' + APP_URL + "/departments/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        var buttons = "";
+
+                        if(row.update){
+                            buttons += '<a href="' + APP_URL + "/departments/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>';
+                        }
+
+                        if(row.delete){
+                            buttons += '<a href="javascript:;" data-text="department" data-url="' + APP_URL + "/departments/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        }
+
+                        return buttons;
 
                     }
                 }
@@ -137,7 +176,17 @@ var AjaxDatatablesClient = {
                     "data": null,
                     "render": function (data, type, row, meta) {
 
-                        return '<a href="' + APP_URL + "/user/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>  <a href="javascript:;" data-text="user" data-url="' + APP_URL + "/user/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        var buttons = "";
+
+                        if(row.update){
+                            buttons += '<a href="' + APP_URL + "/user/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>';
+                        }
+
+                        if(row.delete){
+                            buttons += '<a href="javascript:;" data-text="user" data-url="' + APP_URL + "/user/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        }
+
+                        return buttons;
 
                     }
                 }
@@ -164,7 +213,17 @@ var AjaxDatatablesClient = {
                     "data": null,
                     "render": function (data, type, row, meta) {
 
-                        return '<a href="' + APP_URL + "/permission/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>  <a href="javascript:;" data-text="permission" data-url="' + APP_URL + "/permission/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        var buttons = "";
+
+                        if(row.update){
+                            buttons += '<a href="' + APP_URL + "/permission/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>';
+                        }
+
+                        if(row.delete){
+                            buttons += '<a href="javascript:;" data-text="permission" data-url="' + APP_URL + "/permission/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        }
+
+                        return buttons;
 
                     }
                 }
@@ -191,7 +250,17 @@ var AjaxDatatablesClient = {
                     "data": null,
                     "render": function (data, type, row, meta) {
 
-                        return '<a href="' + APP_URL + "/role/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>  <a href="javascript:;" data-text="role" data-url="' + APP_URL + "/role/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        var buttons = "";
+
+                        if(row.update){
+                            buttons += '<a href="' + APP_URL + "/role/" + row.id + '/edit/' + '" class="editor_edit btn mr-2 btn-primary btn-sm">Edit</a>';
+                        }
+
+                        if(row.delete){
+                            buttons += '<a href="javascript:;" data-text="role" data-url="' + APP_URL + "/role/" + '" data-id="' + row.id + '"   class="editor_remove btn mr-2 btn-danger btn-sm">Delete</a>';
+                        }
+
+                        return buttons;
 
                     }
                 }

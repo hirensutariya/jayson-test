@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Models\Permission;
+use Sentinel;
 
 class PermissionController extends Controller
 {
@@ -45,7 +46,9 @@ class PermissionController extends Controller
             $data_arr[] = array(
                 "id" => $record->id,
                 "name" => $record->name,
-                "date" => Carbon::parse($record->created_at)->format('Y-m-d H:i:s')
+                "date" => Carbon::parse($record->created_at)->format('Y-m-d H:i:s'),
+                "update" => Sentinel::getUser()->hasAccess('permission.update'),
+                "delete" => Sentinel::getUser()->hasAccess('permission.delete'),
             );
         }
 

@@ -13,7 +13,7 @@
                     </a>
                 </li>
 
-                @if(getRolePermission('system-management'))
+                @if( Sentinel::getUser()->hasAnyAccess(['countries.*','states.*','cities.*','departments.*']) )
                 <li class="nav-item {{ (request()->is('countries*')) || (request()->is('states*')) || (request()->is('cities*')) ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link {{ (request()->is('countries*')) || (request()->is('states*')) || (request()->is('cities*')) ? 'active' : '' }}">
                         <i class="nav-icon far fa-envelope"></i>
@@ -23,35 +23,43 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview" style="{{ (request()->is('countries*')) || (request()->is('states*')) || (request()->is('cities*')) ? 'display:block' : '' }}">
+                        @if( Sentinel::getUser()->hasAccess('countries.view') )
                         <li class="nav-item">
                             <a href="{{route('countries.index')}}" class="nav-link {{ (request()->is('countries*')) ? 'active' : '' }} ">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Country</p>
                             </a>
                         </li>
+                        @endif
+                        @if( Sentinel::getUser()->hasAccess('states.view') )
                         <li class="nav-item">
                             <a href="{{route('states.index')}}" class="nav-link {{ (request()->is('states*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>State</p>
                             </a>
                         </li>
+                        @endif
+                        @if( Sentinel::getUser()->hasAccess('cities.view') )
                         <li class="nav-item">
                             <a href="{{route('cities.index')}}" class="nav-link {{ (request()->is('cities*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>City</p>
                             </a>
                         </li>
+                        @endif
+                        @if( Sentinel::getUser()->hasAccess('departments.view') )
                         <li class="nav-item">
                             <a href="{{route('departments.index')}}" class="nav-link {{ (request()->is('departments*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Department</p>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 @endif
 
-                @if(getRolePermission('employee-management'))
+                @if( Sentinel::getUser()->hasAnyAccess('employee.*') )
                 <li class="nav-item">
                     <a href="{{ route('backend.employee.index') }}" class="nav-link {{ (request()->is('employee*')) ? 'active' : '' }}">
                         <i class="fa fa-th"></i> <span>Employee management</span>
@@ -59,7 +67,8 @@
                 </li>
                 @endif
 
-                @if(getRolePermission('user-management'))
+
+                @if( Sentinel::getUser()->hasAnyAccess(['user.*','role.*','permission.*']) )
                 <li class="nav-item {{ (request()->is('user*')) || (request()->is('role*')) || (request()->is('permission*')) ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link {{ (request()->is('user*')) || (request()->is('role*')) || (request()->is('permission*')) ? 'active' : '' }}">
                         <i class="nav-icon far fa-envelope"></i>
@@ -69,24 +78,30 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview" style="{{ (request()->is('user*')) || (request()->is('role*')) || (request()->is('permission*')) ? 'display:block' : '' }}">
+                        @if( Sentinel::getUser()->hasAccess('user.view') )
                         <li class="nav-item ">
                             <a href="{{route('user.index')}}" class="nav-link {{ (request()->is('user*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User</p>
                             </a>
                         </li>
+                        @endif
+                        @if( Sentinel::getUser()->hasAccess('role.view') )
                         <li class="nav-item ">
                             <a href="{{route('role.index')}}" class="nav-link {{ (request()->is('role*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Role</p>
                             </a>
                         </li>
+                        @endif
+                        @if( Sentinel::getUser()->hasAccess('permission.view') )
                         <li class="nav-item">
                             <a href="{{route('permission.index')}}" class="nav-link  {{ (request()->is('permission*')) ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Permission</p>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 @endif

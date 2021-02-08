@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Sentinel;
 
 class EmployeesController extends Controller
 {
     public function index(Request $request)
     {
-        return view('backend.employee.index');
+
+        $permissions = [
+            "create" => Sentinel::getUser()->hasAccess('user.create'),
+            "update" => Sentinel::getUser()->hasAccess('user.update'),
+            "delete" => Sentinel::getUser()->hasAccess('user.delete'),
+        ];
+
+        return view('backend.employee.index',compact('permissions'));
     }
 
     public function create()

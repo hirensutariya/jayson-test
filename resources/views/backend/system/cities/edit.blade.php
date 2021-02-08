@@ -70,7 +70,7 @@
                                 <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                             <div class="col-sm-4">
-                                <a href="{{ route('states.index') }}" class="btn btn-white">Cancel</a>
+                                <a href="{{ route('cities.index') }}" class="btn btn-white">Cancel</a>
                             </div>
                         </div>
                     </form>

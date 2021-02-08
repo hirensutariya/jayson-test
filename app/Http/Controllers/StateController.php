@@ -7,6 +7,7 @@ use App\Models\Countries;
 use App\Models\States;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Sentinel;
 
 class StateController extends Controller
 {
@@ -51,9 +52,11 @@ class StateController extends Controller
         foreach ($allState as $state) {
             $data_arr[] = array(
                 "id" => $state->id,
-                "country" => $state->country,
+                "country" => $state->country->name,
                 "name" => $state->name,
-                "date" => Carbon::parse($state->created_at)->format('Y-m-d H:i:s')
+                "date" => Carbon::parse($state->created_at)->format('Y-m-d H:i:s'),
+                "update" => Sentinel::getUser()->hasAccess('states.update'),
+                "delete" => Sentinel::getUser()->hasAccess('states.delete'),
             );
         }
 
@@ -165,8 +168,6 @@ class StateController extends Controller
     {
 
         $state = States::findOrFail($id);
-
-        Cities::where('state_id',$id)->delete();
 
         $state->delete();
 

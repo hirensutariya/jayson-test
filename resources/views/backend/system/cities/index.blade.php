@@ -16,7 +16,9 @@
 
             <div class="card-tools">
                 <div class="input-group input-group-sm">
+                    @if( Sentinel::getUser()->hasAccess('cities.create') )
                     <a href="{{ route('cities.create') }}" class="btn btn-primary btn-block"> Add New City</a>
+                    @endif
                 </div>
             </div>
         </div>

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\States;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Countries;
 use Carbon\Carbon;
+use Sentinel;
 
 class CountriesController extends Controller
 {
     public function index()
     {
-//        dd(Auth::user()->load('permissions.slug')->toArray());
         return view('backend.system.countries.index');
     }
 
@@ -49,7 +48,9 @@ class CountriesController extends Controller
                 "id" => $record->id,
                 "name" => $record->name,
                 "code" => $record->code,
-                "date" => Carbon::parse($record->created_at)->format('Y-m-d H:i:s')
+                "date" => Carbon::parse($record->created_at)->format('Y-m-d H:i:s'),
+                "update" => Sentinel::getUser()->hasAccess('countries.update'),
+                "delete" => Sentinel::getUser()->hasAccess('countries.delete'),
             );
         }
 
@@ -71,7 +72,14 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        return view('backend.system.countries.create');
+        if (Sentinel::getUser()->hasAccess('countries.create'))
+        {
+            return view('backend.system.countries.create');
+        }
+        else
+        {
+            return "permission denial";
+        }
     }
 
     /**

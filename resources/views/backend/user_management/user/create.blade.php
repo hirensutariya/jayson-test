@@ -59,9 +59,10 @@
                         <label class="col-sm-2 control-label">User Role</label>
                         <div class="col-sm-8">
                             <select class="form-control" name="role" id="role">
+                                <option value="">select role</option>
                                 @if(isset($roleList) && $roleList != "")
                                     @foreach($roleList as $key=>$role)
-                                        <option value="{{$role->id}}">{{$role->name}}</option>
+                                        <option value="{{$role->name}}">{{$role->name}}</option>
                                     @endforeach;
                                 @endif
                             </select>
@@ -74,7 +75,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Password</label>
                         <div class="col-sm-8">
-                            <input type="text" name="password" class="form-control" value="">
+                            <input type="password" name="password" class="form-control" value="">
                             @if($errors->has('password'))
                                 <span class="help-block m-b-none">{{ $errors->first('password') }}</span>
                             @endif
@@ -90,6 +91,19 @@
                             @endif
                         </div>
                     </div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">User Permissions</label>
+						<div class="col-sm-8">
+							<div class="form-group">
+							@foreach($permissionList as $permission)
+								<div class="form-check">
+									<label class="form-check-label"><input class="form-check-input" type="checkbox" name="selected_permissions[]" value="{{$permission->slug}}" >{{ $permission->name }}</label>
+								</div>
+							@endforeach
+							</div>
+						</div>
+					</div>
 
 					<div class="form-group">
 						<div class="col-sm-2 col-sm-offset-1">

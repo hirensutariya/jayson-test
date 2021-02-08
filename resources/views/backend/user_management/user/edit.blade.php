@@ -60,9 +60,10 @@
                         <label class="col-sm-2 control-label">User Role</label>
                         <div class="col-sm-8">
                             <select class="form-control" name="role" id="role">
+                                <option value="">select role</option>
                                 @if(isset($roleList) && $roleList != "")
                                     @foreach($roleList as $key=>$role)
-                                        <option value="{{$role->id}}" @if($role->id == $user->role->role_id) selected @endif>{{$role->name}}</option>
+                                        <option value="{{$role->name}}" @if(@$user->roles->first()->pivot->role_id == $role->id) selected @endif>{{$role->name}}</option>
                                     @endforeach;
                                 @endif
                             </select>
@@ -71,6 +72,19 @@
                             @endif
                         </div>
                     </div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">User Permissions</label>
+						<div class="col-sm-8">
+							<div class="form-group">
+							@foreach($permissionList as $permission)
+								<div class="form-check">
+									<label class="form-check-label"><input class="form-check-input" type="checkbox" name="selected_permissions[]" @if($user->hasAccess($permission->slug)) checked @endif value="{{$permission->slug}}">{{ $permission->name }}</label>
+								</div>
+							@endforeach
+							</div>
+						</div>
+					</div>
 
 					<div class="form-group">
 						<div class="col-sm-2 col-sm-offset-1">

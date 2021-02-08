@@ -18,11 +18,11 @@
                     <div class="alert alert-{{ Session::get('type') }}">{{ Session::get('message') }}</div>
                     @endif
 
-                    @if($errors->has('email'))
-                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                    @if($errors->has('username'))
+                    <span class="text-danger">{{ $errors->first('username') }}</span>
                     @endif
                     <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email" value="">
+                        <input type="text" name="username" class="form-control" placeholder="Email" value="user@gmail.com">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -35,7 +35,7 @@
                         <span class="text-danger">{{ $errors->first('password') }}</span>
                     @endif
                     <div class="input-group mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Password" value="">
+                        <input type="password" name="password" class="form-control" placeholder="Password" value="admin@123dssd">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

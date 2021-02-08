@@ -30,10 +30,10 @@ class CreateEmployeesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('department_id')->references('id')->on('departments');
-            $table->foreign('country_id')->references('id')->on('countries');
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('state_id')->references('id')->on('states');
+            // $table->foreign('department_id')->references('id')->on('departments');
+            // $table->foreign('country_id')->references('id')->on('countries');
+            // $table->foreign('city_id')->references('id')->on('cities');
+            // $table->foreign('state_id')->references('id')->on('states');
 
         });
 

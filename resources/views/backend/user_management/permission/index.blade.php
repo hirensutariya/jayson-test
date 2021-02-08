@@ -17,7 +17,9 @@
 
             <div class="card-tools">
                 <div class="input-group input-group-sm">
+                    @if( Sentinel::getUser()->hasAccess('permission.create') )
                     <a href="{{ route('permission.create') }}" class="btn btn-primary btn-block">Add New Permission</a>
+                    @endif
                 </div>
             </div>
         </div>

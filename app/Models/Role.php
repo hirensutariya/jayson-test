@@ -9,6 +9,9 @@ class Role extends Model
 {
     use HasFactory;
 
+    protected $table = "roles";
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'name',
         'slug',
@@ -19,14 +22,6 @@ class Role extends Model
         'updated_at',
         'deleted_at',
     ];
-
-    public function permissions(){
-        return $this->belongsToMany(Permission::class,'roles_permissions');          
-    }
-     
-    public function users(){
-        return $this->belongsToMany(User::class,'users_roles');
-    }
 
     public function countFilterRecords($searchValue)
     {

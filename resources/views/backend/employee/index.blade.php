@@ -8,7 +8,7 @@
 
 @section('content')
     <div id="app">
-        <app></app>
+        <app :sentinel="{{ Sentinel::getUser() }}"></app>
     </div>
 @endsection
 
